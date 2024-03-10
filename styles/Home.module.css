@@ -10,6 +10,8 @@
   align-self: center;
   text-align: center;
   max-width: 100vw;
+  /* Diagonal gradient from black at top-left to red at the middle and back to black at bottom-right */
+  background: linear-gradient(to bottom right, black, red 50%, black);
 }
 
 .content {
@@ -37,12 +39,16 @@
 
 .heroBackgroundInner {
   position: absolute;
-  top: -352px;
+  top: 50%; /* Adjust this value to better position your image vertically */
   left: 50%;
-  width: clamp(1000px, calc(59.6vw + 776px), 1540px);
-  aspect-ratio: 1/1;
-  transform: translateX(-50%);
-}
+  /* Ensure width scales with the screen size, within a min and max range */
+  width: clamp(30vw, 1000px, 1540px); /* Adjust these values as needed */
+  /* Calculate height based on the width to maintain aspect ratio */
+  height: auto;
+  aspect-ratio: 1 / 1; /* Maintains a square shape */
+  /* Center the image */
+  transform: translate(-50%, -50%);
+} 
 
 .gradient {
   height: 100%;
@@ -59,9 +65,12 @@
 }
 
 .heroAsset {
-  max-width: 100vw;
+  width: 100%; /* Make the image width responsive */
+  max-width: 100%; /* Limit image width to not exceed its container */
+  height: auto; /* Maintain aspect ratio */
   margin-bottom: 16px;
 }
+
 
 .heroBodyContainer {
   width: 100%;
@@ -92,7 +101,26 @@
 .heroTitleGradient {
   padding-right: 12px;
   font-weight: 700;
+  background-image: linear-gradient(90deg, #ffdede, #bb8c8c, #fdb19c); /* Purple gradient */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientAnimation 3.2s linear infinite alternate; /* Use 'alternate' for reversing animation */
+  background-size: 200% auto; /* Ensure the gradient spans the entire text */
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+
 
 .heroSubtitle {
   max-width: 640px;
@@ -348,3 +376,39 @@
     max-height: 540px;
   }
 }
+
+/* Home.module.css */
+.connectWalletButton {
+  background-color: rgba(219, 219, 219, 0.769) !important; /* Black with 40% transparency */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.connectWalletButton:hover {
+  background-color: rgba(146, 146, 146, 0.833) !important; /* Lighter purple with 40% transparency */
+  transform: translateY(-2px); /* Add a slight upward lift on hover */
+}
+.tokenImage {
+  width: 250px !important;
+  height: 250px !important;
+  object-fit: cover;
+}
+
+/* When the screen width is less than 1000px */
+@media (max-width: 1000px) {
+  .tokenImage {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* When the screen width is less than 700px */
+@media (max-width: 700px) {
+  .tokenImage {
+    width: 110px !important;
+    height: 110px !important;
+  }
+}
+
