@@ -1,12 +1,8 @@
-import type { NextPage } from "next";
+iimport type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-/**
- * Landing page with a simple gradient background and a hero asset.
- * Free to customize as you see fit.
- */
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -14,57 +10,65 @@ const Home: NextPage = () => {
         <div className={styles.hero}>
           <div className={styles.heroBackground}>
             <div className={styles.heroBackgroundInner}>
-              <Image
-                src="/hero-gradient.png"
-                width={1390}
-                height={1390}
-                alt="Background gradient from red to blue"
-                quality={100}
-                className={styles.gradient}
-              />
+              {/* Removed the Image component for the hero gradient */}
             </div>
           </div>
           <div className={styles.heroAssetFrame}>
-            <Image
-              src="/hero-asset.png"
-              width={860}
-              height={540}
-              alt="Hero asset, NFT marketplace"
-              quality={100}
-              className={styles.heroAsset}
-            />
+            {/* Update: Removed <a> and directly use <Link> with passHref for Image component */}
+            <Link href="/buy" passHref>
+              <Image
+                src="/hero-asset.png"
+                width={860}
+                height={540}
+                alt="Hero asset, NFT marketplace"
+                quality={100}
+                className={styles.heroAsset}
+              />
+            </Link>
           </div>
           <div className={styles.heroBodyContainer}>
             <div className={styles.heroBody}>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroTitleGradient}>
-                  Build NFT Marketplaces
+                  Purchase Tokens Here.
                 </span>
-                <br />
-                faster than ever.
               </h1>
-              <p className={styles.heroSubtitle}>
-                <Link
-                  className={styles.link}
-                  href="https://thirdweb.com"
-                  target="_blank"
-                >
-                  thirdweb
-                </Link>{" "}
-                gives you the tools you need to create audited, performant, and
-                flexible NFT marketplaces in <b>hours</b>, <i>not months</i>.
-              </p>
-
-              <div className={styles.heroCtaContainer}>
-                <Link className={styles.heroCta} href="/buy">
-                  Get Started
+              {/* Place for the three images and links */}
+              <div className="flex space-x-4">
+                <Link href="https://swap.crodex.app/#/swap?outputCurrency=0x4E2E7700C8f8A414b4AF8828f54330a304B6625d" passHref>
+                
+                <Image
+                  src="/freeCoinTokenSwap.png"
+                   alt="Free Coin Image"
+                   width={60} // Reduced from 75
+                   height={60} // Reduced from 75
+                   layout="responsive"
+                   className={styles.tokenImage} // Apply the new class
+                  />
+                     
                 </Link>
-                <Link
-                  className={styles.secondaryCta}
-                  href="https://github.com/thirdweb-example/marketplace-v3"
-                  target="_blank"
-                >
-                  GitHub
+                <Link href="https://swap.crodex.app/#/swap?outputCurrency=0xe7f3c7c6611357313b5c2734341fe9cbad1d9f59" passHref>
+                 
+                <Image
+                   src="/sycoticTokenSwap.png"
+                     alt="Sycotic Society Image"
+                     width={60} // Reduced from 75
+                     height={60} // Reduced from 75
+                    layout="responsive"
+                    className={styles.tokenImage} // Apply the new class
+                  />
+                   
+                </Link>
+                <Link href="https://swap.crodex.app/#/swap?outputCurrency=0x3E68eA1588E32e51D98dBda6Ea05128513ECC713" passHref>
+                <Image
+                    src="/brokeAsfTokenSwap.png"
+                     alt="Broke ASF Image"
+                     width={60} // Reduced from 75
+                     height={60} // Reduced from 75
+                     layout="responsive"
+                     className={styles.tokenImage} // Apply the new class
+                    />
+                    
                 </Link>
               </div>
             </div>
@@ -76,3 +80,4 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
